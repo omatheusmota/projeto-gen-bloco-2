@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.blogmatheus","l":"BlogMatheusApplication"},{"p":"com.blogmatheus.model","l":"Postagem"},{"p":"com.blogmatheus.controller","l":"PostagemController"},{"p":"com.blogmatheus.repository","l":"PostagemRepository"}];updateSearchResults();
