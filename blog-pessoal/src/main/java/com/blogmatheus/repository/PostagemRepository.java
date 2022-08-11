@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.blogmatheus.model.Postagem;
 
-@Repository
-public interface PostagemRepository extends JpaRepository<Postagem, Long> {
-	public List<Postagem> findAllByTituloContainingIgnoreCase(@Param("titulo") String titulo); //busca por um parametro específico
+	@Repository
+	public interface PostagemRepository extends JpaRepository<Postagem, Long> {
+		public List<Postagem> findAllByTituloContainingIgnoreCase(@Param("titulo") String titulo); //busca por um parametro específico
 }
