@@ -1,92 +1,85 @@
 package com.blogmatheus.model;
-
-import java.time.LocalDateTime;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.time.LocalDateTime; 
 
 @Entity
 @Table(name = "tb_postagens")
 public class Postagem {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@NotBlank
-	@Size(min = 3, max = 255)
-	private String titulo;
-	
-	@NotBlank
-	@Size(min = 5, max = 1000)
-	private String texto;
-	
-	@UpdateTimestamp
-	private LocalDateTime data;
-	
-	@ManyToOne
-	@JsonIgnoreProperties("postagem")
-	private Tema tema;
-	
-	@ManyToOne
-	@JsonIgnoreProperties("postagem")
-	private Usuario usuario;
 
-	public Long getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @NotBlank
+    @Size(min = 3, max = 255)
+    private String titulo;
 
-	public String getTitulo() {
-		return titulo;
-	}
+    @NotBlank
+    @Size(min = 5, max = 1000)
+    private String texto;
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
+    @UpdateTimestamp
+    private LocalDateTime data;
 
-	public String getTexto() {
-		return texto;
-	}
+    @ManyToOne
+    // @JoinColumn(name = "tema_id", nullable = true)    // cria um postagem_id na tabela postagens para criar relacionamento no bd
+    @JsonIgnoreProperties("postagens")
+    private Tema tema;
 
-	public void setTexto(String texto) {
-		this.texto = texto;
-	}
+    @ManyToOne
+    @JsonIgnoreProperties("postagens")
+    private Usuario usuario;
 
-	public LocalDateTime getData() {
-		return data;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setData(LocalDateTime data) {
-		this.data = data;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Tema getTema() {
-		return tema;
-	}
+    public String getTitulo() {
+        return titulo;
+    }
 
-	public void setTema(Tema tema) {
-		this.tema = tema;
-	}
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
+    public String getTexto() {
+        return texto;
+    }
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public void setData(LocalDateTime data) {
+        this.data = data;
+    }
+
+    public Tema getTema() {
+        return tema;
+    }
+
+    public void setTema(Tema tema) {
+        this.tema = tema;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }
